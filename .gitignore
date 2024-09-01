@@ -6,3 +6,4 @@ test/Modules/__pycache__
 test/__pycache__
 .temp
 core/__init__.pyc
+reports
