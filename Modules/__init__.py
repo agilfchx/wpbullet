@@ -1,6 +1,7 @@
 from .SQLInjection import SQLInjection
 from .CrossSiteScripting import CrossSiteScripting
 from .CommandExecution import CommandExecution
+from .FileDeletion import FileDeletion
 from .FileInclusion import FileInclusion
 from .InsecureEmail import InsecureEmail
 from .XPATHInjection import XPATHInjection
