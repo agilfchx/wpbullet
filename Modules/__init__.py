@@ -12,6 +12,7 @@ from .ArbitraryFileUpload import ArbitraryFileUpload
 classes = {
     'CommandExecution': CommandExecution,
     'CrossSiteScripting': CrossSiteScripting,
+    'FileDeletion': FileDeletion,
     'FileInclusion': FileInclusion,
     'HeaderInjection': HeaderInjection,
     'InsecureEmail': InsecureEmail,
