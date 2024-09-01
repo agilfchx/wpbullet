@@ -8,7 +8,13 @@ class ArbitraryFileUpload(BaseClass):
     severity = "High"
 
     functions = [
-        "move_uploaded_file"
+        "move_uploaded_file",
+        "file_put_contents",
+        "fwrite",
+        "fputs",
+        "copy",
+        "fputcsv",
+        "rename"
     ]
 
     blacklist = []
