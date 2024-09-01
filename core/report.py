@@ -1,12 +1,11 @@
 import json
-import random
-import string
+import os
 import re
+from core.converter import convert_json_to_html
 
-
-def save_report(name, data, path):
-
-    filename = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+def save_report(name, data, filename):
+    os.makedirs('reports/json', exist_ok=True)
+    os.makedirs('reports/html', exist_ok=True)
 
     output = []
     if name == 'admin_actions':
@@ -30,7 +29,7 @@ def save_report(name, data, path):
                 'user_input': __(item[3])
             })
 
-    elif name == 'admin_init' or name == 'vulnerabilities':
+    elif name == 'admin_init':
         iterdata = iter(data)
         next(iterdata)
         for item in iterdata:
@@ -39,10 +38,25 @@ def save_report(name, data, path):
                 'file': __(item[1]),
                 'user_input': __(item[2])
             })
+    
+    elif name == 'vulnerabilities':
+        iterdata = iter(data)
+        next(iterdata)
+        for item in iterdata:
+            output.append({
+                'severity': __(item[0]),
+                'vulnerability': __(item[1]),
+                'file': __(item[2]),
+                'info': __(item[3])
+            })
 
-    with open('reports/' + path.split("/")[-1] + filename + '_' + name + '.json', 'w') as outfile:
+    json_filepath = os.path.join('reports/json', filename + '_' + name +'.json')
+
+    with open(json_filepath, 'w') as outfile:
         json.dump(output, outfile)
 
+    html_filepath = os.path.join('reports/html', filename + '_' + name + '.html')
+    convert_json_to_html(json_filepath, html_filepath)
 
 def __(text):
     ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
