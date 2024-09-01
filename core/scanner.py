@@ -78,10 +78,13 @@ def scan(args):
 
     # Save report if requested
     if args.report:
-        report.save_report('admin_init', passive_check.ADMIN_INIT_DATA, args.path)
-        report.save_report('admin_actions', passive_check.ADMIN_ACTIONS_DATA, args.path)
-        report.save_report('ajax_hooks', passive_check.AJAX_HOOKS_DATA, args.path)
-        report.save_report('vulnerabilities', CODE_VULNERABILITIES, args.path)
+        report_filename = args.report.strip()
+        report.save_report('admin_init', passive_check.ADMIN_INIT_DATA, report_filename)
+        report.save_report('admin_actions', passive_check.ADMIN_ACTIONS_DATA, report_filename)
+        report.save_report('ajax_hooks', passive_check.AJAX_HOOKS_DATA, report_filename)
+        report.save_report('vulnerabilities', CODE_VULNERABILITIES, report_filename)
+
+
 
     # Cleanup
     if args.cleanup:
