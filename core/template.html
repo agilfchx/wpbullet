@@ -12,10 +12,12 @@
             font-family: 'Poppins', sans-serif;
             color: #333;
             padding: 20px;
+            margin: 0;
         }
         .container {
             max-width: 100%;
             margin: 0 auto;
+            padding: 0 15px;
         }
         .report-title {
             margin-bottom: 30px;
@@ -24,16 +26,18 @@
             color: #0056b3;
         }
         .table-responsive {
-            overflow-x: hidden;
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
         }
         table {
             border-collapse: collapse;
             width: 100%;
+            table-layout: fixed; /* Ensures the table layout is fixed and columns don't exceed container width */
         }
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #e0e0e0;
+            overflow-wrap: break-word; /* Ensures text wraps within the cell */
         }
         th {
             background-color: #007bff;
@@ -46,17 +50,18 @@
         tr:hover {
             background-color: #e2e6ea;
         }
-        .low {
-            background-color: #d4edda;
+        /* More specific styles to ensure row color classes are applied */
+        tbody tr.low {
+            background-color: #d4edda !important;
         }
-        .medium {
-            background-color: #fff3cd;
+        tbody tr.medium {
+            background-color: #fff3cd !important;
         }
-        .high {
-            background-color: #f8d7da;
+        tbody tr.high {
+            background-color: #f8d7da !important;
         }
-        .critical {
-            background-color: #f5c6cb;
+        tbody tr.critical {
+            background-color: #f5c6cb !important;
         }
     </style>
 </head>
