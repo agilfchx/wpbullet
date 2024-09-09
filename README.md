@@ -26,9 +26,14 @@ Examples:
 --enabled (optional) Check only for given modules, ex. --enabled="SQLInjection,CrossSiteScripting"
 --disabled (optional) Don't check for given modules, ex. --disabled="SQLInjection,CrossSiteScripting"
 --cleanup (optional) Automatically remove content of .temp folder after scanning remotely downloaded plugin (boolean)
---report (optional) Saves result inside reports/ directory in JSON format (boolean)
+--report (optional) Saves result inside reports/ directory in JSON and HTML format
 
 $ python wpbullet.py --path="/var/www/wp-content/plugins/plugin-name"
+```
+
+My Usage:
+```
+$ python3 wpbullet.py --path="<PLUGIN-PATH>" --enabled="ArbitraryFileUpload,CommandExecution,CrossSiteScripting,FileDeletion,FileInclusion,SQLInjection" --report <REPORT-NAME>
 ```
 
 ## Creating modules
